@@ -103,7 +103,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
             'role' => 'required|string',
         ]);
@@ -111,14 +111,15 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'role' => $request->role,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
         return response()->json([
+            'status' => 201,
             'message' => 'User created successfully',
             'user' => $user
-        ]);
+        ],201);
     }
 
 /**

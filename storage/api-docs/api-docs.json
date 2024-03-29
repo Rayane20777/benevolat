@@ -1,0 +1,451 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Swagger with Laravel",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/annonce": {
+            "get": {
+                "summary": "Retrieve all annonces",
+                "description": "Retrieve all annonces.",
+                "operationId": "c3abe75b7fbbdc77a595ea99c43029d4",
+                "responses": {
+                    "200": {
+                        "description": "Annonces retrieved successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/annonce/store": {
+            "post": {
+                "summary": "Store a new annonce",
+                "description": "Store a new annonce.",
+                "operationId": "43e7eab3771e323683f276ed4bd50d49",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "titre",
+                                    "description",
+                                    "date",
+                                    "localisation",
+                                    "type",
+                                    "competence"
+                                ],
+                                "properties": {
+                                    "titre": {
+                                        "description": "Title of the annonce",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Description of the annonce",
+                                        "type": "string"
+                                    },
+                                    "date": {
+                                        "description": "Date of the annonce",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "localisation": {
+                                        "description": "Location of the annonce",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "Type of the annonce",
+                                        "type": "string"
+                                    },
+                                    "competence": {
+                                        "description": "Competence required for the annonce",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Annonce stored successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/annonce/{id}/delete": {
+            "delete": {
+                "summary": "Delete an annonce",
+                "description": "Delete an annonce.",
+                "operationId": "550987bd88c988155657b8cde50e4096",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the annonce",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Annonce deleted successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/annonce/{annonce}/update": {
+            "put": {
+                "summary": "Update an annonce",
+                "description": "Update an annonce.",
+                "operationId": "27888c7668a9ab3f26d0904c4285b2e9",
+                "parameters": [
+                    {
+                        "name": "annonce",
+                        "in": "path",
+                        "description": "ID of the annonce",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "titre",
+                                    "description",
+                                    "date",
+                                    "localisation",
+                                    "type",
+                                    "competence"
+                                ],
+                                "properties": {
+                                    "titre": {
+                                        "description": "Title of the annonce",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Description of the annonce",
+                                        "type": "string"
+                                    },
+                                    "date": {
+                                        "description": "Date of the annonce",
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "localisation": {
+                                        "description": "Location of the annonce",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "Type of the annonce",
+                                        "type": "string"
+                                    },
+                                    "competence": {
+                                        "description": "Competence required for the annonce",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Annonce updated successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/application": {
+            "post": {
+                "summary": "Store a new application",
+                "description": "Store a new application.",
+                "operationId": "74f4af4a1a8f7c3af15e06d36f97f312",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "annonce_id"
+                                ],
+                                "properties": {
+                                    "annonce_id": {
+                                        "description": "ID of the announcement",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Application stored successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/application/{id}/refuse": {
+            "post": {
+                "summary": "Refuse an application",
+                "description": "Refuse an application.",
+                "operationId": "2e833960a89485af947d871b3e520473",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the application",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Application refused successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/application/{id}/confirm": {
+            "post": {
+                "summary": "Confirm an application",
+                "description": "Confirm an application.",
+                "operationId": "5001fa83da9549ec07b58fdd81e0d645",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the application",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Application confirmed successfully"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/login": {
+            "post": {
+                "summary": "Authenticate user and generate JWT token",
+                "operationId": "44212a9096e4b09358281e9ec8a0701d",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    },
+                    "401": {
+                        "description": "Invalid credentials"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "summary": "Register a new user",
+                "operationId": "a718f172ff3ac464d723835815f8fb57",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User's name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "role",
+                        "in": "query",
+                        "description": "User's Role either volenteer or organiser",
+                        "required": true,
+                        "schema": {
+                            "type": "enum"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User registered successfully"
+                    },
+                    "422": {
+                        "description": "Validation errors"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "summary": "Logout user and invalidate JWT token",
+                "description": "Logout user and invalidate the current JWT token.",
+                "operationId": "79854151e609bd20032aa5aa4d5a35c0",
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged out",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successfully logged out"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/refresh": {
+            "post": {
+                "summary": "Refresh JWT token for the authenticated user",
+                "description": "Refresh the JWT token for the authenticated user.",
+                "operationId": "7d5da2870d3eba95cdd67878ab20da3a",
+                "responses": {
+                    "200": {
+                        "description": "JWT token refreshed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "user": {
+                                            "description": "User details",
+                                            "type": "object"
+                                        },
+                                        "authorisation": {
+                                            "description": "Authorization information",
+                                            "properties": {
+                                                "token": {
+                                                    "description": "New JWT token",
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "description": "Type of token",
+                                                    "type": "string",
+                                                    "example": "bearer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
